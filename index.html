@@ -12,7 +12,6 @@
             --text-main: #ffffff;
             --text-secondary: #94a3b8;
             --primary-glow: #00f2ff;
-            --accent-glow: #7000ff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,49 +20,46 @@
             background-color: #050505;
             color: var(--text-main);
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-            min-height: 100vh; /* Changed to allow growth */
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden; /* Prevent side-scroll */
-            overflow-y: auto;   /* Allow vertical scroll */
-            perspective: 1000px;
-            padding: 40px 20px; /* Added breathing room */
+            padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* --- BACKGROUND ORBS (FIXED) --- */
+        /* --- BACKGROUND ORBS (Static) --- */
         .orb {
-            position: fixed; /* Fixed so they don't move when scrolling */
+            position: fixed;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(80px);
             z-index: -1;
             opacity: 0.4;
-            animation: float 15s infinite alternate ease-in-out;
+            animation: pulse-glow 10s infinite alternate;
         }
-        .orb-1 { width: 500px; height: 500px; background: #001eff; top: -10%; left: -10%; }
-        .orb-2 { width: 400px; height: 400px; background: #00f2ff; bottom: -10%; right: -10%; animation-delay: -5s; }
-        .orb-3 { width: 300px; height: 300px; background: #ff0055; top: 40%; left: 40%; animation-delay: -8s; opacity: 0.2; }
+        .orb-1 { width: 400px; height: 400px; background: #001eff; top: -10%; left: -10%; }
+        .orb-2 { width: 300px; height: 300px; background: #00f2ff; bottom: -10%; right: -10%; animation-delay: -2s; }
+        .orb-3 { width: 250px; height: 250px; background: #ff0055; top: 40%; left: 40%; animation-delay: -4s; opacity: 0.2; }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(30px, 50px) scale(1.1); }
+        @keyframes pulse-glow {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.1); }
         }
 
-        /* --- GLASS CARD --- */
+        /* --- GLASS CARD (Locked & Stable) --- */
         .glass-card {
             background: rgba(15, 15, 25, 0.6);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-top: 1px solid var(--glass-highlight);
-            border-radius: 28px;
-            padding: 40px;
+            border-radius: 24px;
+            padding: 35px 30px;
             width: 100%;
-            max-width: 420px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            transform-style: preserve-3d;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             position: relative;
-            margin: auto; /* Ensures centering when scrolling */
+            margin: auto;
         }
 
         /* --- PROFILE SECTION --- */
@@ -71,8 +67,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 35px;
-            transform: translateZ(20px);
+            margin-bottom: 30px;
         }
 
         .avatar-container {
@@ -81,30 +76,30 @@
         }
 
         .avatar {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.1);
             background: url('https://github.com/mvdnssk.png') center/cover;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.1);
         }
 
         /* Status Indicator */
         .status-badge {
             position: absolute;
-            bottom: 5px;
-            right: 5px;
+            bottom: 0;
+            right: 0;
             background: #000;
             border: 1px solid #333;
             border-radius: 20px;
             padding: 4px 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 700;
             color: #0f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
         
         .status-dot {
@@ -112,26 +107,22 @@
             height: 6px;
             background-color: #0f0;
             border-radius: 50%;
-            box-shadow: 0 0 8px #0f0;
+            box-shadow: 0 0 5px #0f0;
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
         h1 { 
-            font-size: 24px; 
+            font-size: 22px; 
             font-weight: 700; 
-            letter-spacing: -0.5px; 
-            margin-bottom: 6px; 
-            background: linear-gradient(to right, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px; 
+            color: #fff;
             text-align: center;
         }
         
         p.subtitle { 
             color: var(--text-secondary); 
-            font-size: 13px; 
+            font-size: 12px; 
             font-weight: 500; 
             letter-spacing: 1.5px; 
             text-transform: uppercase; 
@@ -143,61 +134,61 @@
         .links { 
             display: flex; 
             flex-direction: column; 
-            gap: 14px; 
-            transform: translateZ(30px); 
+            gap: 12px; 
         }
 
         .link-btn {
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 24px;
+            padding: 16px 20px;
             color: white;
             text-decoration: none;
-            background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            background: rgba(255,255,255,0.03);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            overflow: hidden;
+            border-radius: 14px;
+            transition: all 0.2s ease;
         }
 
-        .link-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.1);
-            transform: translateY(-2px) scale(1.01);
+        .link-btn:active { transform: scale(0.98); } /* Click effect */
+        
+        /* Desktop Hover only */
+        @media (hover: hover) {
+            .link-btn:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.3);
+                box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+                transform: translateY(-2px);
+            }
         }
 
-        .btn-content { display: flex; align-items: center; gap: 15px; }
-        .icon { font-size: 20px; width: 24px; text-align: center; color: var(--text-secondary); transition: 0.3s; }
-        .link-btn:hover .icon { color: var(--primary-glow); text-shadow: 0 0 10px var(--primary-glow); }
-        .arrow { opacity: 0.5; transition: 0.3s; }
-        .link-btn:hover .arrow { opacity: 1; transform: translateX(3px); }
+        .btn-content { display: flex; align-items: center; gap: 12px; }
+        .icon { font-size: 18px; width: 24px; text-align: center; color: var(--text-secondary); }
+        .link-btn:hover .icon { color: var(--primary-glow); }
+        .arrow { opacity: 0.4; font-size: 12px; }
 
-        /* --- SOCIAL ROW (Footer) --- */
+        /* --- SOCIAL ROW --- */
         .social-row {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 35px;
-            padding-top: 25px;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            transform: translateZ(30px);
         }
 
         .social-icon {
-            width: 45px;
-            height: 45px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 10px;
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--glass-border);
             color: var(--text-secondary);
-            font-size: 20px;
-            transition: 0.3s;
+            font-size: 18px;
+            transition: 0.2s;
             text-decoration: none;
         }
 
@@ -205,8 +196,6 @@
             background: rgba(255,255,255,0.1); 
             color: white; 
             border-color: var(--primary-glow);
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
     </style>
@@ -218,7 +207,7 @@
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
-    <div class="glass-card" id="card">
+    <div class="glass-card">
         <div class="profile-header">
             <div class="avatar-container">
                 <div class="avatar"></div>
@@ -266,42 +255,17 @@
         </div>
 
         <div class="social-row">
-            <a href="https://t.me/Mvdnssk" target="_blank" class="social-icon" title="Telegram">
+            <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" class="social-icon">
                 <i class="fab fa-telegram-plane"></i>
             </a>
-            
-            <a href="https://www.instagram.com/karthikeya.mudili/" target="_blank" class="social-icon" title="Instagram">
+            <a href="https://instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" class="social-icon">
                 <i class="fab fa-instagram"></i>
             </a>
-
-            <a href="mailto:mvdnssk@gmail.com" class="social-icon" title="Email Me">
+            <a href="mailto:mvdnssk@gmail.com" class="social-icon">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
     </div>
 
-    <script>
-        // 3D Tilt Effect
-        const card = document.getElementById('card');
-        
-        document.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 30;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 30;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
-
-        document.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        });
-
-        // Mobile Gyroscope
-        if (window.DeviceOrientationEvent) {
-            window.addEventListener('deviceorientation', (e) => {
-                const x = e.gamma / 2; 
-                const y = e.beta / 2;
-                card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-            });
-        }
-    </script>
 </body>
 </html>

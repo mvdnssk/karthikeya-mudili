@@ -1,1 +1,215 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDNSS | Command Center</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.3);
+            --text-main: #ffffff;
+            --text-secondary: #a0a0a0;
+            --primary-glow: #00f2ff;
+            --secondary-glow: #0033ff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #050505;
+            color: var(--text-main);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* --- BACKGROUND ORBS --- */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite ease-in-out;
+        }
+        .orb-1 { width: 400px; height: 400px; background: #2e00ff; top: -10%; left: -10%; animation-delay: 0s; opacity: 0.4; }
+        .orb-2 { width: 300px; height: 300px; background: #00f2ff; bottom: -10%; right: -10%; animation-delay: -5s; opacity: 0.3; }
+        .orb-3 { width: 200px; height: 200px; background: #ff0055; top: 40%; left: 40%; animation-delay: -2s; opacity: 0.2; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* --- GLASS CARD --- */
+        .glass-card {
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid var(--glass-highlight);
+            border-radius: 24px;
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Shine Effect */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-25deg);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { left: -100%; }
+            10% { left: 200%; }
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+            transform: translateZ(20px);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-highlight);
+            margin-bottom: 15px;
+            background: url('https://github.com/mvdnssk.png') center/cover;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 5px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        p.subtitle { color: var(--text-secondary); font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- LINKS LIST --- */
+        .links { display: flex; flex-direction: column; gap: 12px; transform: translateZ(30px); }
+
+        .link-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .link-btn span { z-index: 2; }
+        
+        .icon { margin-right: 10px; font-size: 18px; }
+
+        /* Social Row */
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            transform: translateZ(30px);
+        }
+
+        .social-icon {
+            color: var(--text-secondary);
+            font-size: 24px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-icon:hover { color: var(--primary-glow); transform: translateY(-3px); text-shadow: 0 0 10px var(--primary-glow); }
+
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="glass-card" id="card">
+        <div class="profile-header">
+            <div class="avatar"></div>
+            <h1>VDNSS Karthikeya</h1>
+            <p class="subtitle">FinTech Strategist | CA Student</p>
+        </div>
+
+        <div class="links">
+            <a href="https://mvdnssk.github.io" class="link-btn">
+                <i class="fas fa-rocket icon"></i>
+                <span>Executive Portfolio</span>
+            </a>
+            <a href="https://www.linkedin.com/in/karthikeya-mudili/" class="link-btn">
+                <i class="fab fa-linkedin icon"></i>
+                <span>LinkedIn Network</span>
+            </a>
+            <a href="https://zenodo.org/records/18526916" class="link-btn">
+                <i class="fas fa-book icon"></i>
+                <span>Research Database</span>
+            </a>
+            <a href="https://github.com/mvdnssk" class="link-btn">
+                <i class="fab fa-github icon"></i>
+                <span>GitHub Code</span>
+            </a>
+        </div>
+
+        <div class="social-row">
+            <a href="https://t.me/YOUR_USERNAME" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/YOUR_USERNAME" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:mvdnssk@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // 3D Parallax Tilt Effect
+        const card = document.getElementById('card');
+        
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Reset on leave
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+
+        // Mobile Gyroscope Support (Optional/Advanced)
+        window.addEventListener('deviceorientation', (e) => {
+            const x = e.gamma / 2; // Left/Right
+            const y = e.beta / 2;  // Front/Back
+            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    </script>
+</body>
+</html>

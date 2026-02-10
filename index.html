@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VDNSS Karthikeya | FinTech Command Center</title>
+    <title>VDNSS Karthikeya Mudili | Official Bio Links </title>
     <meta name="description" content="Official Link-in-Bio for VDNSS Karthikeya Mudili. FinTech Strategist, CA Student, and Algorithmic Auditor. Access research, portfolio, and contact details.">
-    <meta name="author" content="VDNSS Karthikeya">
+    <meta name="author" content="VDNSS Karthikeya Mudili">
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -15,13 +15,13 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://karthikeya.is-a.dev/">
-    <meta property="og:title" content="VDNSS Karthikeya | FinTech Command Center">
+    <meta property="og:title" content="VDNSS Karthikeya Mudili | FinTech Command Center">
     <meta property="og:description" content="FinTech Strategist | CA Student | Algorithmic Auditor.">
     <meta property="og:image" content="https://karthikeya.is-a.dev/banner.png">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://karthikeya.is-a.dev/">
-    <meta name="twitter:title" content="VDNSS Karthikeya | FinTech Command Center">
+    <meta name="twitter:title" content="VDNSS Karthikeya Mudili | FinTech Command Center">
     <meta name="twitter:description" content="FinTech Strategist | CA Student | Algorithmic Auditor.">
     <meta name="twitter:image" content="https://karthikeya.is-a.dev/banner.png">
 
@@ -173,7 +173,8 @@
                 <div class="avatar"></div>
                 <div class="status-badge"><div class="status-dot"></div><span>ONLINE</span></div>
             </div>
-            <h1 id="protected-name">VDNSS Karthikeya</h1>
+            
+            <h1 id="protected-name">VDNSS Karthikeya Mudili</h1>
             <p class="subtitle">FinTech Strategist | CA Student</p>
         </div>
 
@@ -215,7 +216,7 @@
         </div>
 
         <div class="copyright-footer" id="protected-footer">
-            © 2026 VDNSS KARTHIKEYA. ALL RIGHTS RESERVED.<br>
+            © 2026 VDNSS KARTHIKEYA MUDILI. ALL RIGHTS RESERVED.<br>
             VERIFIED DIGITAL LEDGER
         </div>
     </div>
@@ -231,37 +232,37 @@
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ return false; } // Ctrl+U
         }
 
-        // 2. ANTI-TAMPER REDIRECT LOGIC
-        // This runs constantly to check if elements are deleted
+        // 2. STRICT ANTI-TAMPER REDIRECT LOGIC
         setInterval(function() {
             var targetURL = "https://mvdnssk.github.io/karthikeya-mudili/";
             
-            // Check if the Name exists and matches
+            // --- NAME CHECK (BOTH PARTS REQUIRED) ---
             var nameCheck = document.getElementById("protected-name");
-            if (!nameCheck || !nameCheck.innerText.includes("Karthikeya")) {
+            if (!nameCheck) { window.location.replace(targetURL); }
+            
+            // Get the text inside the Name tag
+            var currentName = nameCheck.innerText;
+
+            // IF "Karthikeya" is missing OR "Mudili" is missing => REDIRECT
+            if (!currentName.includes("Karthikeya") || !currentName.includes("Mudili")) {
                 window.location.replace(targetURL);
             }
 
-            // Check if the Footer exists
+            // --- FOOTER CHECK ---
             var footerCheck = document.getElementById("protected-footer");
-            if (!footerCheck) {
-                window.location.replace(targetURL);
-            }
+            if (!footerCheck) { window.location.replace(targetURL); }
 
-            // Check if Critical Links exist
+            // --- LINK CHECKS ---
             var ssrnCheck = document.getElementById("link-ssrn");
             var portCheck = document.getElementById("link-portfolio");
             
-            if (!ssrnCheck || !portCheck) {
-                window.location.replace(targetURL);
-            }
+            if (!ssrnCheck || !portCheck) { window.location.replace(targetURL); }
             
-            // If someone tries to change the href of the portfolio
             if (portCheck && !portCheck.href.includes("mvdnssk.github.io")) {
                  window.location.replace(targetURL);
             }
 
-        }, 1500); // Checks every 1.5 seconds
+        }, 1500); 
     </script>
 </body>
 </html>
